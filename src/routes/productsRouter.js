@@ -5,11 +5,12 @@ const {
   deleteProduct,
   getProductAmount,
 } = require('../controllers/productsController');
+const { validateNewProduct } = require('../helper');
 
 const productsRouter = express.Router();
 
 productsRouter.get('/products', getProducts);
-productsRouter.post('/products', postProduct);
+productsRouter.post('/products', validateNewProduct, postProduct);
 productsRouter.delete('/products/:id', deleteProduct);
 productsRouter.get('/totalproducts', getProductAmount);
 
